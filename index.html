@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshit Kothari | Professional Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --bg: #050a15;
+            --surface: #0f172a;
+            --accent: #d4af37;
+            /* Royal Gold */
+            --accent-glow: rgba(212, 175, 55, 0.2);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: rgba(212, 175, 55, 0.15);
+            --glass: rgba(15, 23, 42, 0.95);
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --accent: #b8860b;
+            --accent-glow: rgba(184, 134, 11, 0.1);
+            --text-main: #0f172a;
+            --text-dim: #475569;
+            --border: rgba(184, 134, 11, 0.2);
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+            transition: all 0.25s ease;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Floating Distinction */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--border);
+            background: var(--glass);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            object-fit: cover;
+            background: #1e293b;
+        }
+
+        .nav-btns {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-cv {
+            background: var(--accent);
+            color: #000;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .theme-toggle {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Hero - Significant space added at top to separate from Nav */
+        .hero {
+            height: 45vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 160px 20px 80px;
+            /* Top padding increased to 160px for distinction */
+            margin-bottom: 70px;
+            /* Space between banner and main content dashboard */
+            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 80%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 900px;
+            line-height: 1.4;
+        }
+
+        /* Sidebar Contact */
+        .contact-card {
+            padding: 25px;
+            margin: 0 15px 25px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            width: 18px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Layout Grid */
+        .main-grid {
+            max-width: 1300px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            padding: 0 20px;
+        }
+
+        .sidebar {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px 0;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .tab-link {
+            padding: 16px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-dim);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-left: 4px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-link i {
+            width: 20px;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .tab-link:hover {
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .tab-link.active {
+            color: var(--accent);
+            background: var(--accent-glow);
+            border-left-color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Content Panel */
+        .content-area {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 60px;
+            min-height: 800px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Cards */
+        .item-card {
+            margin-bottom: 50px;
+            border-left: 3px solid var(--border);
+            padding-left: 30px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .item-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .item-subtitle {
+            color: var(--text-main);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .item-date {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            background: var(--border);
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        li {
+            margin-bottom: 14px;
+            color: var(--text-dim);
+            position: relative;
+            padding-left: 25px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        li::before {
+            content: "◈";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.9rem;
+            top: 2px;
+        }
+
+        /* Skill Kit */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 18px;
+        }
+
+        .skill-card h4 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-badge {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Highlights */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .highlight-box {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            background: linear-gradient(to bottom, var(--accent-glow), transparent);
+        }
+
+        .highlight-box span {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .highlight-box label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+            margin-top: 10px;
+        }
+
+        th {
+            text-align: left;
+            color: var(--accent);
+            border-bottom: 2px solid var(--border);
+            padding: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 20px 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border);
+            font-size: 1.05rem;
+        }
+
+        tr td:first-child {
+            border-radius: 10px 0 0 10px;
+            border-left: 1px solid var(--border);
+        }
+
+        tr td:last-child {
+            border-radius: 0 10px 10px 0;
+            border-right: 1px solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                padding-top: 120px;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+                gap: 20px;
+            }
+
+            .sidebar {
+                position: static;
+                display: flex;
+                overflow-x: auto;
+                width: 100%;
+                border-radius: 12px;
+                margin-bottom: 30px;
+            }
+
+            .tab-link {
+                white-space: nowrap;
+                border-left: none;
+                border-bottom: 4px solid transparent;
+            }
+
+            .tab-link.active {
+                border-bottom-color: var(--accent);
+            }
+
+            .contact-card {
+                display: none;
+            }
+
+            .content-area {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+
+    <nav>
+        <div class="profile-brand">
+            <img src="profile.jpg" alt="HK" class="profile-img"
+                onerror="this.src='https://ui-avatars.com/api/?name=Harshit+Kothari&background=d4af37&color=000'">
+            <div style="font-weight: 800; letter-spacing: 1px; font-size: 1.1rem;">HARSHIT <span
+                    style="color: var(--accent);">KOTHARI</span></div>
+        </div>
+        <div class="nav-btns">
+            <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
+            <a href="#" class="btn-cv"><i class="fas fa-file-pdf"></i> DOWNLOAD CV</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Harshit Bhavin Kothari</h1>
+        <p>Software Engineer @ GlobalLogic | IIT Gandhinagar '25 Graduate | AI & Automotive Systems Specialist</p>
+    </header>
+
+    <div class="main-grid">
+        <aside class="sidebar">
+            <div class="contact-card">
+                <p
+                    style="font-size: 0.75rem; color: var(--accent); font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">
+                    Contact Hub</p>
+                <a href="mailto:harshitbhavin@gmail.com" class="contact-item"><i class="fas fa-envelope"></i>
+                    harshitbhavin@gmail.com</a>
+                <a href="tel:+917019123702" class="contact-item"><i class="fas fa-phone"></i> +91 7019123702</a>
+                <a href="https://www.linkedin.com/in/harshit-kothari-731ab4227/" target="_blank" class="contact-item"><i
+                        class="fab fa-linkedin"></i> LinkedIn Profile</a>
+            </div>
+
+            <div class="tab-link active" onclick="openTab(event, 'education')"><i class="fas fa-university"></i>
+                Education</div>
+            <div class="tab-link" onclick="openTab(event, 'experience')"><i class="fas fa-briefcase"></i> Experience
+            </div>
+            <div class="tab-link" onclick="openTab(event, 'projects')"><i class="fas fa-project-diagram"></i> Projects
+            </div>
+            <div class="tab-link" onclick="openTab(event, 'leadership')"><i class="fas fa-shield-alt"></i> Leadership
+            </div>
+            <div class="tab-link" onclick="openTab(event, 'skills')"><i class="fas fa-laptop-code"></i> Skills Kit</div>
+            <div class="tab-link" onclick="openTab(event, 'ranks')"><i class="fas fa-award"></i> Achievements</div>
+            <div class="tab-link" onclick="openTab(event, 'extra')"><i class="fas fa-running"></i> Extra-Curricular
+            </div>
+        </aside>
+
+        <main class="content-area">
+
+            <section id="education" class="tab-panel active">
+                <h2>🎓 Academic Foundation</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th>Institute</th>
+                            <th>Year</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>B.Tech (Electrical Engineering)</b></td>
+                            <td>IIT Gandhinagar</td>
+                            <td>2021-2025</td>
+                            <td>8.08 CPI</td>
+                        </tr>
+                        <tr>
+                            <td><b>Class XII (PCM)</b></td>
+                            <td>Shri Chaitanya Techno School</td>
+                            <td>2021</td>
+                            <td>96.8%</td>
+                        </tr>
+                        <tr>
+                            <td><b>Class X</b></td>
+                            <td>Ryan International School</td>
+                            <td>2019</td>
+                            <td>97.6%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="experience" class="tab-panel">
+                <h2>💼 Work History</h2>
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-title">GlobalLogic (Hitachi Group)</span>
+                        <span class="item-date">JULY 2025 – PRESENT</span>
+                    </div>
+                    <span class="item-subtitle">Software Engineer (Automotive Division)</span>
+                    <ul>
+                        <li>Contributing to automotive software for a <b>globally recognized German luxury automobile
+                                manufacturer</b>.</li>
+                        <li>Built a <b>Computer Vision automated testing system</b> for infotainment screens; features
+                            black screen detection and audio validation.</li>
+                        <li>Developed interactive <b>Live-Analysis UI</b> using multithreading for KPI analytics.</li>
+                        <li>Designed <b>Python Tkinter UI</b> to automate backend integration between HILS and
+                            Codebeamer.</li>
+                        <li>Implemented <b>OTA security protocols</b> with CA certificate authentication.</li>
+                    </ul>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-title">Acuver Consulting</span>
+                        <span class="item-date">JAN 2025 – JULY 2025</span>
+                    </div>
+                    <span class="item-subtitle">AI-ML Engineer</span>
+                    <ul>
+                        <li>Implemented <b>RAG (Retrieval-Augmented Generation)</b> models to enhance chatbot and AI
+                            dashboards.</li>
+                        <li>Engineered time series forecasting (<b>ARIMA, SARIMA, Prophet</b>) for inventory planning.
+                        </li>
+                        <li>Developed a <b>Retail AI Advisor</b> using LangGraph agentic AI architecture.</li>
+                    </ul>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-title">Axxela Research and Analytics</span>
+                        <span class="item-date">MAY – JULY 2024</span>
+                    </div>
+                    <span class="item-subtitle">Trading Analyst Intern</span>
+                    <ul>
+                        <li>Traded <b>EURIBOR futures</b> using ATR and moving averages.</li>
+                        <li>Expertise in <b>risk management</b> and hedging techniques.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="projects" class="tab-panel">
+                <h2>🚀 Technical Ventures</h2>
+                <div class="item-card">
+                    <span class="item-title">Bitcoin Blockchain Analysis</span>
+                    <ul>
+                        <li>Performed nodal analysis using <b>Louvain Algorithm</b> and <b>Spectral Clustering</b>.</li>
+                        <li>Analyzed transaction flows and network centrality for BTC decentralized network.</li>
+                    </ul>
+                </div>
+                <div class="item-card">
+                    <span class="item-title">LPG Gas Detection & Prevention</span>
+                    <ul>
+                        <li>Developed system using <b>STM32</b> and MQ5 sensors.</li>
+                        <li>Integrated NodeMCU for mobile leak notifications and automated valve control.</li>
+                    </ul>
+                </div>
+                <div class="item-card">
+                    <span class="item-title">Simulation Study of Solar Cells</span>
+                    <ul>
+                        <li>Used <b>nextNano software</b> to optimize structural changes for increased efficiency.</li>
+                    </ul>
+                </div>
+                <div class="item-card">
+                    <span class="item-title">Retail Strategy Analysis</span>
+                    <ul>
+                        <li>Leveraged <b>SQL</b> for data extraction and <b>Tableau</b> for geographic profit
+                            visualization.</li>
+                    </ul>
+                </div>
+                <div class="item-card">
+                    <span class="item-title">GDP Factor Analysis</span>
+                    <ul>
+                        <li>Analyzed massive datasets to find resource-related insights affecting national GDP.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="leadership" class="tab-panel">
+                <h2>⭐ Leadership & Soft Skills</h2>
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-title">Tech Expo Executive, Amalthea</span>
+                        <span class="item-date">2022-2023</span>
+                    </div>
+                    <span class="item-subtitle">Annual Technical Summit (IIT Gandhinagar)</span>
+                    <ul>
+                        <li>Demonstrated strong proficiency in <b>database management</b> and effective communication
+                            with company HoDs.</li>
+                        <li>Excelled in <b>collaboration and teamwork</b> within a 10-member group to achieve complex
+                            project objectives for the expo.</li>
+                        <li>Exhibited exceptional <b>presentation and analytical skills</b> by contributing to
+                            collaborative technical projects.</li>
+                        <li>Drove effective <b>data-driven decision-making processes</b>, ensuring streamlined logistics
+                            and exhibition quality.</li>
+                    </ul>
+                </div>
+                <div class="item-card">
+                    <div class="item-header">
+                        <span class="item-title">Event Executive, Blithchron</span>
+                        <span class="item-date">2022-2023</span>
+                    </div>
+                    <span class="item-subtitle">Annual Cultural Fest (IIT Gandhinagar)</span>
+                    <ul>
+                        <li>Successfully led a team of 10 individuals as the <b>Event Leader</b> for the singing
+                            competition, Euphony.</li>
+                        <li>Showcased strong <b>leadership and event management skills</b> by overseeing end-to-end
+                            event execution.</li>
+                        <li>Gained valuable experience in <b>team coordination</b> and multi-departmental logistics
+                            management.</li>
+                        <li>Facilitated smooth communication between participants and organizers to ensure a
+                            high-quality cultural experience.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="skills" class="tab-panel">
+                <h2>🛠️ Technical Skill Kit</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>Languages</h4>
+                        <div class="skill-list">
+                            <span class="skill-badge">Python</span><span class="skill-badge">C++</span>
+                            <span class="skill-badge">QNX</span><span class="skill-badge">Java</span>
+                            <span class="skill-badge">MySQL</span><span class="skill-badge">Verilog</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>AI & Data</h4>
+                        <div class="skill-list">
+                            <span class="skill-badge">LangChain</span><span class="skill-badge">RAG</span>
+                            <span class="skill-badge">Time Series</span><span class="skill-badge">Prophet</span>
+                            <span class="skill-badge">Computer Vision</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Visualization</h4>
+                        <div class="skill-list">
+                            <span class="skill-badge">Tableau</span><span class="skill-badge">PowerBI</span>
+                            <span class="skill-badge">Canva</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Tools & Hardware</h4>
+                        <div class="skill-list">
+                            <span class="skill-badge">STM32</span><span class="skill-badge">AWS</span>
+                            <span class="skill-badge">Postman</span><span class="skill-badge">MongoDB</span>
+                            <span class="skill-badge">MATLAB</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ranks" class="tab-panel">
+                <h2>🏆 Ranks & Honors</h2>
+                <div class="highlight-grid">
+                    <div class="highlight-box"><span>AIR 663</span><label>GATE 2025 (DA/AI)</label></div>
+                    <div class="highlight-box"><span>99.76%</span><label>CAT DILR</label></div>
+                    <div class="highlight-box"><span>100%</span><label>JEE Maths</label></div>
+                </div>
+                <ul>
+                    <li><b>JEE Mains 2021:</b> AIR 3515 (99.689 Percentile).</li>
+                    <li><b>GATE 2025:</b> AIR 1130 in Electronics & Communication.</li>
+                    <li><b>Tata Imagination Challenge:</b> Semi-finalist (Top among 1.15 Cr participants).</li>
+                    <li><b>National Cyber Olympiad:</b> Bronze Medal (State Level).</li>
+                </ul>
+            </section>
+
+            <section id="extra" class="tab-panel">
+                <h2>⚡ Beyond the Resume</h2>
+                <ul>
+                    <li><b>Inter-IIT Cultural Meet:</b> Represented IIT-Gandhinagar in Dance (Chennai 2022).</li>
+                    <li><b>Sports:</b> Dedicated sports enthusiast with a deep passion for Cricket.</li>
+                    <li><b>Exploration:</b> Enthusiastic about traveling and exploring new cultures.</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            const panels = document.getElementsByClassName("tab-panel");
+            for (let i = 0; i < panels.length; i++) panels[i].classList.remove("active");
+            const links = document.getElementsByClassName("tab-link");
+            for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = "fas fa-moon";
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.className = "fas fa-sun";
+            }
+        }
+    </script>
+</body>
+
+</html>
