@@ -642,6 +642,16 @@
             white-space: nowrap;
         }
 
+        .edu-note {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         /* ─── TIMELINE ─── */
         .timeline {
             position: relative;
@@ -876,7 +886,7 @@
         /* ─── SKILLS ─── */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
         }
 
@@ -1244,7 +1254,8 @@
                 </div>
             </div>
             <div class="sidebar-nav-group">
-                <div class="sidebar-label" style="padding-left: 16px; margin-bottom: 8px;"><i class="fas fa-compass"></i> Navigate</div>
+                <div class="sidebar-label" style="padding-left: 16px; margin-bottom: 8px;"><i
+                        class="fas fa-compass"></i> Navigate</div>
                 <div class="sidebar-nav" role="navigation" aria-label="Content navigation">
                     <button class="side-tab active" data-tab="education"><i class="fas fa-university"></i>
                         Education</button>
@@ -1264,38 +1275,66 @@
             <!-- EDUCATION -->
             <section id="education" class="panel active">
                 <h2 class="sec-title"><span class="ico"><i class="fas fa-university"></i></span> Academic Foundation
-                </h2>
+                    &amp; Certifications</h2>
                 <div class="edu-wrap">
                     <table class="edu-table">
                         <thead>
                             <tr>
-                                <th>Degree</th>
-                                <th>Institution</th>
+                                <th>Qualification</th>
+                                <th>Specialization / Certification</th>
+                                <th>Institute</th>
                                 <th>Year</th>
                                 <th>Score</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>B.Tech — Electrical Engineering</td>
+                                <td>B.Tech</td>
+                                <td>Electrical Engineering</td>
                                 <td>IIT Gandhinagar</td>
-                                <td>2021–2025</td>
+                                <td>2021–2025*</td>
                                 <td><span class="edu-score">8.08 CPI</span></td>
                             </tr>
                             <tr>
-                                <td>Class XII · PCM</td>
+                                <td>Class XII</td>
+                                <td>Physics, Chemistry, Mathematics (PCM)</td>
                                 <td>Shri Chaitanya Techno School, Bangalore</td>
                                 <td>2020–2021</td>
                                 <td><span class="edu-score">96.8 %</span></td>
                             </tr>
                             <tr>
                                 <td>Class X</td>
+                                <td>General</td>
                                 <td>Ryan International School, Bangalore</td>
                                 <td>2018–2019</td>
                                 <td><span class="edu-score">97.6 %</span></td>
                             </tr>
+                            <tr>
+                                <td>Certificate</td>
+                                <td>Data Analytics</td>
+                                <td>Coding Ninjas</td>
+                                <td>2023</td>
+                                <td><span class="edu-score">98.5 %</span></td>
+                            </tr>
+                            <tr>
+                                <td>Certificate</td>
+                                <td>Data Structures &amp; Algorithms</td>
+                                <td>Coding Ninjas</td>
+                                <td>2023</td>
+                                <td><span class="edu-score">92.5 %</span></td>
+                            </tr>
+                            <tr>
+                                <td>Certificate</td>
+                                <td>Data Science &amp; Machine Learning</td>
+                                <td>Coding Ninjas</td>
+                                <td>2023</td>
+                                <td><span class="edu-score">94 %</span></td>
+                            </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="edu-note">
+                    <i class="fas fa-info-circle"></i> * Awarded early graduation in December 2024
                 </div>
             </section>
 
@@ -1424,7 +1463,7 @@
                     <div class="proj-card">
                         <div class="proj-tags">
                             <span class="proj-tag">Python</span><span class="proj-tag">NetworkX</span>
-                            <span class="proj-tag">Clustering</span>
+                            <span class="proj-tag">Clustering</span><span class="proj-tag">Data Science</span>
                         </div>
                         <h3 class="proj-title"><i class="fab fa-bitcoin"></i> Bitcoin Network Analysis</h3>
                         <div class="proj-desc">
@@ -1432,6 +1471,24 @@
                                 <li>Graph analysis of Bitcoin transaction networks using Louvain and spectral clustering
                                     for community detection.</li>
                                 <li>Uncovered network vulnerabilities and centrality patterns in transaction flows.</li>
+                            </ul>
+                        </div>
+                        <div class="proj-foot">
+                            <span class="status-done"><i class="fa-solid fa-circle-check"></i> Completed</span>
+                        </div>
+                    </div>
+                    <div class="proj-card">
+                        <div class="proj-tags">
+                            <span class="proj-tag">SQL</span><span class="proj-tag">Tableau</span>
+                            <span class="proj-tag">Data Analytics</span>
+                        </div>
+                        <h3 class="proj-title"><i class="fa-solid fa-chart-line"></i> Retail Strategy Analysis</h3>
+                        <div class="proj-desc">
+                            <ul>
+                                <li>Multi-table retail dataset analysis (orders, customers, returns) for actionable
+                                    business insights.</li>
+                                <li>Interactive Tableau dashboards for regional performance and return rates to guide
+                                    inventory decisions.</li>
                             </ul>
                         </div>
                         <div class="proj-foot">
@@ -1456,26 +1513,6 @@
                             <span class="status-done"><i class="fa-solid fa-circle-check"></i> Completed</span>
                         </div>
                     </div>
-
-                    <div class="proj-card">
-                        <div class="proj-tags">
-                            <span class="proj-tag">SQL</span><span class="proj-tag">Tableau</span>
-                            <span class="proj-tag">Data Analytics</span>
-                        </div>
-                        <h3 class="proj-title"><i class="fa-solid fa-chart-line"></i> Retail Strategy Analysis</h3>
-                        <div class="proj-desc">
-                            <ul>
-                                <li>Multi-table retail dataset analysis (orders, customers, returns) for actionable
-                                    business insights.</li>
-                                <li>Interactive Tableau dashboards for regional performance and return rates to guide
-                                    inventory decisions.</li>
-                            </ul>
-                        </div>
-                        <div class="proj-foot">
-                            <span class="status-done"><i class="fa-solid fa-circle-check"></i> Completed</span>
-                        </div>
-                    </div>
-
                     <div class="proj-card">
                         <div class="proj-tags">
                             <span class="proj-tag">nextNano</span><span class="proj-tag">Solid-State Physics</span>
@@ -1510,7 +1547,20 @@
                             <span class="badge"><i class="fab fa-java" style="color:#f89820"></i> Java</span>
                             <span class="badge">Verilog</span>
                             <span class="badge">MATLAB</span>
+                            <span class="badge"><i class="fa-solid fa-diagram-successor"
+                                    style="color:#77094b"></i>></i>Mermaid</span>
                             <span class="badge">QNX RTOS</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-title"><i class="fas fa-brain"></i> AI & Data Science</div>
+                        <div class="badges">
+                            <span class="badge">RAG Models</span>
+                            <span class="badge">Time Series</span>
+                            <span class="badge">Computer Vision</span>
+                            <span class="badge">Embedding Search</span>
+                            <span class="badge">Prompt Engineering</span>
+                            <span class="badge">Sales Forecasting</span>
                         </div>
                     </div>
                     <div class="skill-box">
@@ -1522,7 +1572,6 @@
                             <span class="badge">LangGraph</span>
                             <span class="badge">Pydantic</span>
                             <span class="badge"><i class="fab fa-css3-alt" style="color:#38bdf8"></i> Tailwind</span>
-                            <span class="badge">shadcn/ui</span>
                             <span class="badge">Tkinter</span>
                         </div>
                     </div>
@@ -1539,17 +1588,7 @@
                             <span class="badge">Postman</span>
                         </div>
                     </div>
-                    <div class="skill-box">
-                        <div class="skill-box-title"><i class="fas fa-brain"></i> AI & Data Science</div>
-                        <div class="badges">
-                            <span class="badge">RAG Models</span>
-                            <span class="badge">Time Series</span>
-                            <span class="badge">Computer Vision</span>
-                            <span class="badge">Embedding Search</span>
-                            <span class="badge">Prompt Engineering</span>
-                            <span class="badge">Sales Forecasting</span>
-                        </div>
-                    </div>
+                    
                 </div>
             </section>
 
@@ -1585,18 +1624,15 @@
                         Mathematics.</li>
                     <li><strong>GATE 2025:</strong> AIR 663 in Data Science & AI; AIR 1130 in Electronics &
                         Communication.</li>
-                    <li><strong>CAT 2024:</strong> 96.95 overall percentile; 99.76 percentile in DILR.</li>
-                    <li><strong>Tata Imagination Challenge:</strong> Reached semi-finals, demonstrating business &
+                    <li><strong>CAT 2024:</strong> 96.95 overall percentile; 99.76 percentile in Data Interpretation &
+                        Logical Reasoning.</li>
+                    <li><strong>Tata Imagination Challenge:</strong> Reached national semi-finals, demonstrating storng
+                        business &
                         technology integration.</li>
                     <li><strong>National Cyber Olympiad:</strong> Bronze medal at state level.</li>
                 </ul>
 
-                <div class="sub-heading"><i class="fas fa-certificate"></i> Certifications</div>
-                <ul class="bullet-list">
-                    <li><strong>Data Analytics:</strong> Certificate of Excellence (98.5%) — Coding Ninjas.</li>
-                    <li><strong>Data Structures & Algorithms:</strong> Professional certification (Python).</li>
-                    <li><strong>Data Science & ML:</strong> Professional certification.</li>
-                </ul>
+
             </section>
 
             <!-- LEADERSHIP -->
@@ -1643,9 +1679,11 @@
                         <p>Represented IIT Gandhinagar in dance at the Inter-IIT Cultural Meet 2022, IIT Chennai.</p>
                     </div>
                     <div class="extra-card">
-                        <div class="extra-icon"><i class="fas fa-cricket-bat-ball"></i></div>
-                        <h4>Cricket Enthusiast</h4>
-                        <p>Passionate player and analyst — drawn to the tactics and statistics of the game.</p>
+                        <div class="extra-icon"><i class="fa-solid fa-baseball-bat-ball"></i></i></div>
+                        <h4>Sports Enthusiast</h4>
+                        <p>A passionate sports enthusiast with a keen interest in cricket, actively participating in the
+                            GlobalLogic Premier League (GPL)
+                            and embracing teamwork, collaboration, and healthy competition.</p>
                     </div>
                     <div class="extra-card">
                         <div class="extra-icon"><i class="fas fa-earth-asia"></i></div>
@@ -1708,9 +1746,16 @@
             // animate counters if achievements
             if (id === 'achievements') setTimeout(animateCounters, 80);
 
-            // smooth scroll content to top on mobile
+            // smooth scroll content to top
             if (window.innerWidth <= 768) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const contentMain = document.getElementById('content-main');
+                if (contentMain) {
+                    const yOffset = -90; // Fixed header height + gap
+                    const y = contentMain.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
             }
         }
 
